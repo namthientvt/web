@@ -1,0 +1,19 @@
+﻿@using WebSiteBanSach.Models;
+@model List<Sach>
+
+<h1 class="item-header">Sách Mới</h1>
+
+@{
+    foreach (var item in Model)
+    {
+        <div class="activity-list-update">
+            <img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" alt="Image" height="50" width="50">
+            <p><strong>Tiêu Đề @item.TenSach</strong><br /><a href="#">Xem Chi Tiết</a></p>
+            <div class="clear"></div>
+        </div>
+    }
+}
+
+<a href="#" class="item-footer green">
+    Sách Mới Cập Nhật
+</a>

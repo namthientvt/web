@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.WebBanSach</title>
+    <link href="~/Content/CssLayoutNguoiDung/screen.css" rel="stylesheet" />
+    <link href="~/Content/CssLayoutNguoiDung/fonts.css" rel="stylesheet" />
+    <link href="~/Content/CssLayoutNguoiDung/NguoiDungCssLayout.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/NivoSlider/nivo-slider.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
+    
+</head>
+<body>
+        
+    <div id="ToanTrang">
+
+        <section class="blank">
+            <div class="flash">
+                <div class="icDienThoai">
+                    <i class="fa fa-phone"></i>
+                    (+84) 165-821-9991
+                </div>
+                @*Div Đăng Ký Đăng Nhập*@
+                <div class="DangKyDangNhap">
+                    <i class="fa fa-sign-in"></i>
+                    @Html.ActionLink("Đăng Ký", "DangKy", null, htmlAttributes: new { @class = "DangKy" })
+                    <i class="fa fa-unlock"></i>
+                    @Html.ActionLink("Đăng Nhập", "DangNhap", null, htmlAttributes: new { @class = "DangNhap" })
+
+            </div>
+        </div> 
+        @*Xây dựng div Menu*@
+        <div class="flash success" id="divDanhMuc">
+            @*div Tìm Kiếm*@
+            <div id="txtTimKiem">
+                @using (Html.BeginForm())
+                {
+                    @Html.TextBox("txtTimKiem","",htmlAttributes: new {@class="textBoxTimKiem",@placeholder="Nhập vào từ khóa cần tìm ..." })
+                    <div id="divHinhAnhTimKiem">
+                        <button type="submit"><img src="~/HinhAnh/imgSearch.png" /></button>
+                    </div>
+                }
+            </div>
+            @*div Menu Phải*@
+            <ul class="navMenu">
+                <li>
+                    <a href="#">Trang Chủ</a>
+                </li>
+                <li>
+                    <a href="#">Giới Thiệu</a>
+                </li>
+                <li>
+                    <a href="#">Liên Hệ</a>
+                </li>
+                <li>
+                    <a href="#">Hướng Dẫn</a>
+                </li>
+                <li>
+                    <a href="#">Sách</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+        
+    <section>
+        @*Div Menu bên trái*@
+        <div id="divMenuTrai">
+            @*Chèn vào partial view sách mới*@
+            <div class="activity">
+                @Html.Action("SachMoiPartial","Sach")
+                
+            </div>
+        </div>
+        @*Chèn div Nivo Slider*@
+        <div id="slider" class="nivoSlider">
+            <img src="~/HinhAnh/Anh1.jpg" />
+            <img src="~/HinhAnh/Anh2.jpg" />
+            <img src="~/HinhAnh/Anh3.jpg" />
+        </div>
+        <div style="clear:both"></div>
+    </section>
+
+        <section>
+            @*Phần Chủ Đề*@
+            <div>
+                @Html.Action("ChuDePartial", "ChuDe")
+            </div>
+        </section>
+
+        @*div body*@
+        <div id="NoiDung">
+            @RenderBody()
+            <hr />
+        </div>
+    
+        @*div nhà xuất bản*@
+    <section class="blank items">
+        <div id="divLeft">
+            <div class="item">
+                <div class="item-info">
+                    @Html.Action("NhaXuatBanPartial","NhaXuatBan")
+                    
+                </div>
+                <img src="http://lorempixel.com/400/300/" alt="Image">
+            </div>
+        </div>
+            <div id="divRight">
+                @RenderSection("NoiDungBenPhai")
+            </div>
+            <div style="clear:both"></div>
+                <div>
+                    <a href="#" class="button button-buy">Chào Mừng Bạn Đã Đến Với Web bán Hàng Của Tôi</a>
+                </div>
+    </section>
+    </div>
+    @*Script chạy slider*@
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $('#slider').nivoSlider({
+                controlNav:false,
+            nextText: '',
+            prevText:''
+            });
+        });
+    </script>
+</body>
+</html>

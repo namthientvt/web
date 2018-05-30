@@ -1,0 +1,10 @@
+﻿@using WebSiteBanSach.Models;
+@model List<NhaXuatBan>
+
+
+<h1>Nhà Xuất Bản</h1>
+@foreach (var item in Model)
+{
+    <div><a href="#">@item.TenNXB</a></div>
+}
+    <div><a href="#">Nhà Xuất Bản Khác ...</a></div>
